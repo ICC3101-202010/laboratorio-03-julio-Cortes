@@ -12,32 +12,36 @@ namespace Lab3
         private int Price;
         private readonly string Brand;
         private int Stock;
-        private readonly string DueDate;
-        public int Stock1 { get => Stock; set => Stock = value; }
-        public int Price1 { get => Price; set => Price = value; }
+
+
+        public int Stock1 { get => Stock; }
+        public int Price1 { get => Price; }
+
         //Atributos
-        public int PriceChange(int price)
+        public void PriceChange(int price)
         {
-            this.Price = price;
-            return 0;
+            Price = price;
         }
+        public void StockChange(int stock)
+        {
+            Stock = stock;
+;        }
+
 
         //Metodos
-        public Product(string name, int price, string brand, int stock, string duedate)
+        public Product(string name, int price, string brand, int stock)
         {
-            this.Name = name;
-            this.Price = price;
-            this.Brand = brand;
-            this.Stock = stock;
-            this.DueDate = duedate;
+            Name = name;
+            Price = price;
+            Brand = brand;
+            Stock = stock;
         }
         public Product()
         {
-            this.Name = "Null";
-            this.Price = 0;
-            this.Brand = "Null";
-            this.Stock = 0;
-            this.DueDate = "Null";
+            Name = "Null";
+            Price = 0;
+            Brand = "Null";
+            Stock = 0;
         }
         //Constructores
     }

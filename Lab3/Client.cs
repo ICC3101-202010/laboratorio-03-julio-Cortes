@@ -8,6 +8,13 @@ namespace Lab3
 {
     class Client:Person
     {
-
+       public int PriceCheck(Product product)
+        {
+            return product.Price1;
+        }
+       public int StockCheck(Product product)
+        {
+            return product.Stock1;
+        }
     }
 }
