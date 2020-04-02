@@ -13,24 +13,32 @@ namespace Lab3
         private string LastName;
         private string Birthday;
         private int Money;
-        public int Money1 { get => Money; set => Money = value; }
+        List<Product> Cart = new List<Product>();
 
         //atributos
-        public Person (string rut, string name, string lastname, string birthday, int money) //constructor
+        public void AddToCart(Product product)
         {
-            this.Rut = rut;
-            this.Name = name;
-            this.LastName = lastname;
-            this.Birthday = birthday;
-            this.Money1 = money;
+            Cart.Add(product);
+            int aux = product.Stock1;
+            aux--;
+        }
+        public void 
+        //Metodos
+        public Person(string name, string lastname, string birthday, int money, string rut) //constructor
+        {
+            Rut = rut;
+            Name = name;
+            LastName = lastname;
+            Birthday = birthday;
+            Money = money;
         }
         public Person ()//Constructor default
         {
-            this.Rut = "6261890-6";
-            this.Name = "Juan";
-            this.LastName = "Perez";
-            this.Birthday = "28/02/1990";
-            this.Money1 = 320000;
+            Rut = "6261890-6";
+            Name = "Juan";
+            LastName = "Perez";
+            Birthday = "28/02/1990";
+            Money = 320000;
         }
 
     }
