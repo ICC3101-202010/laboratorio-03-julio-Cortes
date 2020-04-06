@@ -9,5 +9,7 @@ namespace Lab3
     class Supervisor
     {
         private string area;
+        //atributos
+
     }
 }

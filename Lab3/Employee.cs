@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Employee:Client
+    class Employee : Client
     {
-        private int Salary;
-        private string Schedule;
-        private string Job;
+        private int salary;
+        protected string Schedule;
+        protected string Job;
+
+        protected int Salary { get => salary; set => salary = value; }
+
+        public Employee(string name, string lastname, string birthday, string nacionality, int money, string rut, int salary, string schedule,string job) : base(name, lastname, birthday, nacionality, money, rut)
+        {
+            this.Salary = salary;
+            this.Schedule = schedule;
+            this.Job = job;
+        }
+
         //atributos
         public void Changejob(Employee empleado1, Employee empleado2)
         {
@@ -34,7 +44,7 @@ namespace Lab3
         {
             Schedule = schedule;
         }
-        public new List<Product> Buy()
+        public override List<Product> Buy()
         {
             int aux = Money;
             foreach (Product item in Cart)

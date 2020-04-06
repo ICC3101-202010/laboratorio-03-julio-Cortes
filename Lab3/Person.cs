@@ -26,7 +26,7 @@ namespace Lab3
             aux--;
             product.StockChange(aux);
         }
-        public List<Product> Buy()
+        public virtual List<Product> Buy()
         {
             int aux = Money;
             foreach (Product item in Cart)
