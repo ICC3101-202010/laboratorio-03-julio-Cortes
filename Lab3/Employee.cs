@@ -8,11 +8,9 @@ namespace Lab3
 {
     class Employee : Client
     {
-        private int salary;
+        private int Salary;
         protected string Schedule;
         protected string Job;
-
-        protected int Salary { get => salary; set => salary = value; }
 
         public Employee(string name, string lastname, string birthday, string nacionality, int money, string rut, int salary, string schedule,string job) : base(name, lastname, birthday, nacionality, money, rut)
         {
@@ -32,6 +30,7 @@ namespace Lab3
         public void Changejob(string job)
         {
             Job = job;
+            
         }
         public void Changeschedule(Employee empleado1, Employee empleado2)
         {
@@ -67,6 +66,18 @@ namespace Lab3
                 Console.WriteLine("No alcanzan los fondos, pruebe removiendo algun articulo");
                 return Cart;
             }
+        }
+        public void ChangeSalary(int salary)
+        {
+            this.Salary = salary;
+        }
+        public int ReturnSalary()
+        {
+            return Salary;
+        }
+        public void payment(int money)
+        {
+            Money += money;
         }
     }
 }

@@ -8,7 +8,12 @@ namespace Lab3
 {
     class Client:Person
     {
-       public int PriceCheck(Product product)
+        public Client(string name, string lastname, string birthday, string nacionality, int money, string rut) : base(name, lastname, birthday, nacionality, money, rut)
+        {
+
+        }
+
+        public int PriceCheck(Product product)
         {
             return product.Price1;
         }
@@ -16,5 +21,8 @@ namespace Lab3
         {
             return product.Stock1;
         }
+
+
+            
     }
 }

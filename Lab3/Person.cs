@@ -8,17 +8,35 @@ namespace Lab3
 {
     class Person
     {
+        public Person(string name, string lastname, string birthday, string nacionality, int money, string rut) //constructor
+        {
+            Rut = rut;
+            Name = name;
+            LastName = lastname;
+            Nacionality = nacionality;
+            Birthday = birthday;
+            Money = money;
+        }
+
         protected string Rut;
         protected string Name;
         protected string LastName;
         protected string Birthday;
+        protected string Nacionality;
         protected int Money;
         protected List<Product> Belongings= new List<Product>();
         protected List<Product> Cart = new List<Product>();
 
         public int Money1 { get => Money; set => Money = value; }
-
         //atributos
+        public string returnrut()
+        {
+            return Rut;
+        }
+        public List<Product> returncart()
+        {
+            return Cart;
+        }
         public void AddToCart(Product product)
         {
             Cart.Add(product);
@@ -59,22 +77,8 @@ namespace Lab3
         }
         //Metodos
 
-        public Person(string name, string lastname, string birthday, int money, string rut) //constructor
-        {
-            Rut = rut;
-            Name = name;
-            LastName = lastname;
-            Birthday = birthday;
-            Money = money;
-        }
-        public Person ()//Constructor default
-        {
-            Rut = "6261890-6";
-            Name = "Juan";
-            LastName = "Perez";
-            Birthday = "28/02/1990";
-            Money = 320000;
-        }
+
+
 
     }
 }

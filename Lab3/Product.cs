@@ -8,16 +8,24 @@ namespace Lab3
 {
     class Product
     {
+        public Product(string name, int price, string brand, int stock)
+        {
+            Name = name;
+            Price = price;
+            Brand = brand;
+            Stock = stock;
+        }//Constructor
+
         private readonly string Name;
         private int Price;
         private readonly string Brand;
-        private int Stock;
+        private int Stock;//Atributos
 
 
         public int Stock1 { get => Stock; }
         public int Price1 { get => Price; }
 
-        //Atributos
+    
         public void PriceChange(int price)
         {
             Price = price;
@@ -25,24 +33,13 @@ namespace Lab3
         public void StockChange(int stock)
         {
             Stock = stock;
-;        }
-
-
+        }
+        public string getName()
+        {
+            return Name;
+        }
         //Metodos
-        public Product(string name, int price, string brand, int stock)
-        {
-            Name = name;
-            Price = price;
-            Brand = brand;
-            Stock = stock;
-        }
-        public Product()
-        {
-            Name = "Null";
-            Price = 0;
-            Brand = "Null";
-            Stock = 0;
-        }
-        //Constructores
+
+
     }
 }
