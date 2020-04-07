@@ -14,16 +14,86 @@ namespace Lab3
         }
 
         //atributos
-        public void ChangeSalary(Employee employee, int salary)
+        public void AddProduct(List<Product> products)
         {
-            employee.ChangeSalary(salary);
+            Console.WriteLine("Ingrese el nombre del producto:");
+            string nameproducto = Console.ReadLine();
+            string auxproducto = "0";
+            int price = 0;
+            while (auxproducto != "1")
+            {
+                Console.WriteLine("Ingrese el precio del producto:");
+                string pricestring = Console.ReadLine();
+                if (int.TryParse(pricestring, out price))
+                {
+                    price = Convert.ToInt32(pricestring);
+                    auxproducto = "1";
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un numero valido\n");
+                }
+            }
+            Console.WriteLine("Ingrese la marca del producto");
+            string brand = Console.ReadLine();
+            string auxstock = "0";
+            int stock = 0;
+            while (auxstock != "1")
+            {
+                Console.WriteLine("Ingrese el stock inicial del producto:");
+                string stockstring = Console.ReadLine();
+                if (int.TryParse(stockstring, out stock))
+                {
+                    stock = Convert.ToInt32(stockstring);
+                    auxstock = "1";
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un numero valido\n");
+                }
+
+            }
+            Product producto = new Product(nameproducto, price, brand, stock);
+            products.Add(producto);
+
+        }
+        public void ChangeSalary(Employee employee)
+        {
+            string auxsalary = "0";
+            int salarytemp = 0;
+            while (auxsalary != "1")
+            {
+                Console.WriteLine("A cuanto desea cambiarle el sueldo:");
+                string salary = Console.ReadLine();
+                if (int.TryParse(salary, out salarytemp))
+                {
+                    salarytemp = Convert.ToInt32(salary);
+                    auxsalary = "1";
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un numero valido\n");
+                }
+
+            }
+            employee.ChangeSalary(salarytemp);
         }
         public void Payment(List<Employee> employees)
         {
             foreach (Employee employee in employees)
             {
-                employee.payment(employee.ReturnSalary());
+                employee.Paymentinf(employee.ReturnSalary());
             }
+        }
+        public void ChangeSchedule(Employee employee)
+        {
+            Console.WriteLine("Ingrese nuevo horario::");
+            employee.Changeschedule(Console.ReadLine());
+        }
+        public void ChangeJob(Employee employee)
+        {
+            Console.WriteLine("Ingrese nuevo puesto:");
+            employee.Changejob(Console.ReadLine());
         }
     }
    

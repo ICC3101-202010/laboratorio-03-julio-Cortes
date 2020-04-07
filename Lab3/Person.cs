@@ -29,11 +29,11 @@ namespace Lab3
 
         public int Money1 { get => Money; set => Money = value; }
         //atributos
-        public string returnrut()
+        public string ReturnRut()
         {
             return Rut;
         }
-        public List<Product> returncart()
+        public List<Product> ReturnCart()
         {
             return Cart;
         }

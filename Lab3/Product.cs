@@ -26,15 +26,12 @@ namespace Lab3
         public int Price1 { get => Price; }
 
     
-        public void PriceChange(int price)
-        {
-            Price = price;
-        }
+
         public void StockChange(int stock)
         {
             Stock = stock;
         }
-        public string getName()
+        public string GetName()
         {
             return Name;
         }
