@@ -35,7 +35,7 @@ namespace Lab3
         }
         public List<Product> ReturnCart()
         {
-            return Cart;
+             return Cart;
         }
         public void AddToCart(Product product)
         {
@@ -44,7 +44,7 @@ namespace Lab3
             aux--;
             product.StockChange(aux);
         }
-        public virtual List<Product> Buy()
+        public  List<Product> Buy()
         {
             int aux = Money;
             foreach (Product item in Cart)
@@ -64,19 +64,46 @@ namespace Lab3
             }
             else
             {
-               Console.WriteLine("No alcanzan los fondos, pruebe removiendo algun articulo");
+               Console.WriteLine("No alcanzan los fondos, El carro se eliminara");
+                foreach (Product product in Cart)
+                {
+                    int auxantistock = product.Stock1;
+                    auxantistock++;
+                    product.StockChange(auxantistock);
+                }
+               Cart.Clear();
                return Cart;
             }
         }
         public void ReturnToStore(Product product)
         {
+            Console.WriteLine("Tula");
             Cart.Remove(product);
+            Console.WriteLine("Yes");
             int aux = product.Stock1;
             aux++;
             product.StockChange(aux);
         }
         //Metodos
+        public void Checkcart()
+        {
+            if (Cart.Count()!=0)
+            {
+                foreach (Product product in Cart)
+                {
+                    Console.WriteLine(product.GetName());
+                }
+            }
+            else
+            {
+                Console.WriteLine("El carro esta vacio");
+            }
 
+        }
+        public void CheckMoney()
+        {
+            Console.WriteLine(Money);
+        }
 
 
 

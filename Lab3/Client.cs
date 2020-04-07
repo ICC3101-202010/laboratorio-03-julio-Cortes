@@ -15,10 +15,12 @@ namespace Lab3
 
         public int PriceCheck(Product product)
         {
+            Console.WriteLine("\nEl percio del producto es:");
             return product.Price1;
         }
        public int StockCheck(Product product)
         {
+            Console.WriteLine("\nEl stock del producto es: ");
             return product.Stock1;
         }
 

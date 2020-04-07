@@ -12,13 +12,20 @@ namespace Lab3
         static void Main(string[] args)
         {
             //DateTime localdate = DateTime.Now;
-            List<Client> listofclients = new List<Client>();
-            List<Employee> listofemployees = new List<Employee>();
-            List<Product> listofproducts = new List<Product>();
+            List<Client> listofclients = new List<Client>() {new Client("Diego","Gonzalez","28/02/2000","Chileno",500000,"12954851-7") };
+            List<Employee> listofemployees = new List<Employee>() {new Employee("Pedro", "lopez", "01/05/1992", "Colombiano", 0, "12345678-k", 200000, "7:00 a 15:00", "cajero") };
+            List<Product> listofproducts = new List<Product>() {new Product("Coca cola",1000,"coca-cola company",100)};
             List<Boleta> listofchecks = new List<Boleta>();
-            List<Supervisor> supervisors = new List<Supervisor>();
+            List<Supervisor> supervisors = new List<Supervisor>() {new Supervisor("Juan","Perez","05/01/1993","Venezolano",10,"12345678-9",320000,"7:00 a 15:00","Supervisor fiambreria")};
+            
+
+            //El Supermercado no funciona de no haber al menos 1 empleado con el trabajo cajero o Cajero
+            //Añadir productos es exclusivo de el menu del supervisor
+
+
+
             string Default_Stopper = "5";
-            string Client_Stoper = "6";
+            string Client_Stoper = "7";
             Console.WriteLine("Bienvenido al supermercado porfavor eliga una opcion:");
             string stopper = "0";
             while (stopper!=Default_Stopper)
@@ -78,7 +85,7 @@ namespace Lab3
                                     string clientstopper = "0";
                                     while (Client_Stoper != clientstopper)
                                     {
-                                        Console.WriteLine("\n(1)Agregar producto al carro\n(2)Devolver producto\n(3)Consultar Precio \n(4)Consultar stock\n(5)Finalizar compra\n(6)Volver al menu\n");
+                                        Console.WriteLine("\n(1)Agregar producto al carro\n(2)Consultar Precio \n(3)Consultar stock\n(4)Finalizar compra\n(5)Revisar carro\n(6)Revisar Dinero\n(7)Volver al menu\n");
                                         clientstopper = Console.ReadLine();
                                         switch (clientstopper)
                                         {
@@ -112,37 +119,8 @@ namespace Lab3
                                                     Console.WriteLine("No existen productos en este momento");
                                                     break;
                                                 }
- 
+
                                             case "2"://d
-                                                bool fixer2 = false;
-                                                Console.WriteLine("Ingrese el nombre del producto a devolver:");
-                                                string productnamereturn = Console.ReadLine();
-                                                if (cliente.ReturnCart().Count()!=0)
-                                                {
-                                                    foreach (Product product in cliente.ReturnCart())
-                                                    {
-                                                        if (product.GetName() == productnamereturn)
-                                                        {
-                                                            fixer2 = true;
-                                                            cliente.ReturnToStore(product);
-                                                        }
-                                                    }
-                                                    if (fixer2)
-                                                    {
-                                                        break;
-                                                    }
-                                                    else
-                                                    {
-                                                        Console.WriteLine("No se encontro el producto, intente nuevamente");
-                                                        break;
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    Console.WriteLine("No hay productos para devolver");
-                                                    break;
-                                                }
-                                            case "3"://d
                                                 bool fixer3 = false;
                                                 Console.WriteLine("Ingrese el nombre del producto:");
                                                 string productnameprice = Console.ReadLine();
@@ -153,7 +131,7 @@ namespace Lab3
                                                         if (product.GetName() == productnameprice)
                                                         {
                                                             fixer3 = true;
-                                                            Console.WriteLine(cliente.PriceCheck(product));
+                                                            Console.WriteLine(cliente.PriceCheck(product)+"\n");
                                                         }
                                                     }
                                                     if (fixer3)
@@ -171,7 +149,7 @@ namespace Lab3
                                                     Console.WriteLine("No hay productos para consultar");
                                                     break;
                                                 }
-                                            case "4"://d
+                                            case "3"://d
                                                 bool fixer4 = false;
                                                 Console.WriteLine("Ingrese el nombre del producto:");
                                                 string productnamestock = Console.ReadLine();
@@ -182,7 +160,7 @@ namespace Lab3
                                                         if (product.GetName() == productnamestock)
                                                         {
                                                             fixer4 = true;
-                                                            Console.WriteLine(cliente.StockCheck(product));
+                                                            Console.WriteLine(cliente.StockCheck(product)+"\n");
                                                         }
                                                     }
                                                     if (fixer4)
@@ -200,7 +178,7 @@ namespace Lab3
                                                     Console.WriteLine("No hay productos para consultar");
                                                     break;
                                                 }
-                                            case "5"://d
+                                            case "4"://d
                                                 bool fixer5 = false;
                                                 if (listofemployees.Count() != 0)
                                                 {
@@ -238,8 +216,13 @@ namespace Lab3
                                                     Console.WriteLine("No hay empleados para atender como cajero");
                                                     break;
                                                 }
-
+                                            case "5":
+                                                cliente.Checkcart();
+                                                break;
                                             case "6":
+                                                cliente.CheckMoney();
+                                                break;
+                                            case "7":
                                                 break;
                                             default:
                                                 Console.WriteLine("Ingrese una opcion valida");
@@ -394,14 +377,14 @@ namespace Lab3
                                     string supswitcher = "0";
                                     while (Sup_Stopper!=supswitcher)
                                     {
-                                        Console.WriteLine("(1)Añadir Producto\n(2)Cambiar Salario de empleado\n(3)Pagar sueldos\n(4)Cambiar horario de empleado\n(5)Cambiar puesto de empleado\n(6)Salir");
+                                        Console.WriteLine("\n(1)Añadir Producto\n(2)Cambiar Salario de empleado\n(3)Pagar sueldos\n(4)Cambiar horario de empleado\n(5)Cambiar puesto de empleado\n(6)Salir");
                                         supswitcher = Console.ReadLine();
                                         switch (supswitcher)
                                         {
                                             case "1"://Anadir product d
                                                 supervisor.AddProduct(listofproducts);
                                                 break;
-                                            case "2 "://Cambiar salario d
+                                            case "2"://Cambiar salario d
                                                 bool fixer7 = false;
                                                 Console.WriteLine("Ingrese el rut del empleado con el siguiente formato: 12346578-9");
                                                 string rutempleado = Console.ReadLine();

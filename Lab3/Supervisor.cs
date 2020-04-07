@@ -84,6 +84,7 @@ namespace Lab3
             {
                 employee.Paymentinf(employee.ReturnSalary());
             }
+            Console.WriteLine("Sueldos pagados");
         }
         public void ChangeSchedule(Employee employee)
         {
